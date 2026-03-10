@@ -14,7 +14,7 @@ function calcularDesconto() {
 
     removerClasses();
 
-    if(porcentagem.value <= 5) {
+    if (porcentagem.value <= 5) {
         resultado.classList.add('baixo');
     } else if (porcentagem.value > 5 && porcentagem.value <= 10) {
         resultado.classList.add('medio');

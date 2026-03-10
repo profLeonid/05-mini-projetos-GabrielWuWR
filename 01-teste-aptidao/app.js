@@ -9,12 +9,12 @@ function avaliar() {
     const tempo = document.getElementById('tempo');
     const resultado = document.getElementById('resultado');
 
+    removerClasses();
+    
     if (tempo.value < 14) {
-        removerClasses();
         resultado.textContent = 'Apto';
         resultado.classList.add('apto');
     } else {
-        removerClasses();
         resultado.textContent = 'Não apto';
         resultado.classList.add('nao-apto');
     };

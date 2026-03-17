@@ -1,26 +1,32 @@
 'use strict';
 
-function removerClasses() {
-    const resultado = document.getElementById('resultado');
-    resultado.classList.remove('alto', 'medio', 'baixo');
+const calcularValorEconomizado = (preco, desconto) => preco * desconto / 100;
+const calcularPrecoFinal = (preco, valorEconomizado) => preco - valorEconomizado;
+
+function selecionarCor(desconto) {
+    if (desconto <= 5) {
+        return 'desconto1';
+    } else if (desconto <= 10) {
+        return 'desconto2';
+    } else {
+        return 'desconto3';
+    };
 };
 
-function calcularDesconto() {
-    const numero = document.getElementById('numero');
-    const porcentagem = document.getElementById('porcentagem');
+function limparClasses() {
+    document.getElementById('resultado').classList.remove('desconto1', 'desconto2', 'desconto3');
+}
+
+function handleClick() {
+    const preco = Number(document.getElementById('preco').value);
+    const desconto = Number(document.getElementById('desconto').value);
     const resultado = document.getElementById('resultado');
 
-    let resposta = (numero.value * porcentagem.value) / 100;
+    const valorEconomizado = calcularValorEconomizado(preco, desconto);
+    const precoFinal = calcularPrecoFinal(preco, valorEconomizado);
+    const cor = selecionarCor(desconto);
 
-    removerClasses();
-
-    if (porcentagem.value <= 5) {
-        resultado.classList.add('baixo');
-    } else if (porcentagem.value > 5 && porcentagem.value <= 10) {
-        resultado.classList.add('medio');
-    } else {
-        resultado.classList.add('alto');
-    }
-
-    resultado.textContent = resposta;
-}
+    resultado.textContent = `${valorEconomizado} - ${precoFinal}`;
+    limparClasses();
+    resultado.classList.add(cor);
+};

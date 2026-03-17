@@ -26,6 +26,5 @@ function calcularMedia() {
     } else {
         resultado.textContent = 'Reprovado';
         resultado.classList.add('reprovado');
-    }
-
-}
+    };
+};
